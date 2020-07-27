@@ -25,7 +25,9 @@ julia> WinKnownPaths.path(FOLDERID.Fonts)
 ```
 
 `FOLDERID` contains constants that identify possible paths callable through their
-`UUID`. The full list is provided below:
+`UUID`. The full list is provided below, please see the documentation for
+[knownfolderid](https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid) for
+a detailed description of each constant:
 ```julia
 FOLDERID.AccountPictures
 FOLDERID.AdminTools
