@@ -1,4 +1,5 @@
 using WinKnownPaths
+using UUIDs
 using Test
 
 import WinKnownPaths: FOLDERID
