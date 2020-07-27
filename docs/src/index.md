@@ -7,12 +7,12 @@ CurrentModule = WinKnownPaths
 This package allows you to reliably and safely call known Windows paths identified by
 their UUID without having to make brittle calls to the system environment variables.
 
-### Installation
+## Installation
 ```julia
 pkg> add WinKnownPaths
 ```
 
-## Usage
+## Usage & Examples
 
 
 First install the package:
