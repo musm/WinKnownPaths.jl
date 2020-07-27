@@ -1,6 +1,10 @@
 using WinKnownPaths
 using Test
 
+import WinKnownPaths: FOLDERID
 @testset "WinKnownPaths.jl" begin
-    # Write your tests here.
+    if Sys.iswindows()
+        @test !isempty(WinKnownPaths.path(FOLDERID.System))
+        @test_throws SystemError WinKnownPaths.path(UUID(UInt128(0)))
+    end
 end
