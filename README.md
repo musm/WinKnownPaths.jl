@@ -11,7 +11,7 @@ their UUID without having to make brittle calls to the system environment variab
 pkg> add WinKnownPaths
 ```
 
-## Usage
+## Usage & Examples
 
 
 ```julia
