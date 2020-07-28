@@ -121,7 +121,6 @@ function Base.convert(::Type{GUID}, uuid::UUID)
     data4 = ntuple(i -> UInt8((bytes >> (64 - i*8)) & 0xff), 8)
     return GUID(data1, data2, data3, data4)
 end
-GUID(uuid::UUID) = convert(GUID,uuid)
 
 const KF_FLAG_DEFAULT = 0x00000000
 
