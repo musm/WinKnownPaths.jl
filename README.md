@@ -15,6 +15,7 @@ pkg> add WinKnownPaths
 
 
 ```julia
+julia> using WinKnownPaths
 julia> import WinKnownPaths: FOLDERID
 
 julia> WinKnownPaths.path(FOLDERID.System)
