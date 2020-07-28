@@ -4,8 +4,8 @@ CurrentModule = WinKnownPaths
 
 # WinKnownPaths
 
-This package allows you to reliably and safely call known Windows paths identified by
-their UUID without having to make brittle calls to the system environment variables.
+This package allows you to reliably call known Windows paths identified by
+their UUID without having to make brittle calls to system environment variables.
 
 ## Installation
 ```julia
@@ -14,21 +14,17 @@ pkg> add WinKnownPaths
 
 ## Usage & Examples
 
-
-First install the package:
-```julia
-pkg> add WinKnownPaths
-```
-
 Here's an example call to determine the system32 path and the system folder path.
 
-```julia
-julia> import WinKnownPaths: FOLDERID
+```@repl
+using WinKnownPaths
 
-julia> WinKnownPaths.path(FOLDERID.System)
+import WinKnownPaths: FOLDERID
+
+WinKnownPaths.path(FOLDERID.System)
 "C:\\WINDOWS\\system32"
 
-julia> WinKnownPaths.path(FOLDERID.Fonts)
+WinKnownPaths.path(FOLDERID.Fonts)
 "C:\\WINDOWS\\Fonts"
 ```
 
