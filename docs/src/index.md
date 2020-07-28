@@ -14,7 +14,7 @@ pkg> add WinKnownPaths
 
 ## Usage & Examples
 
-Here's an example call to determine the system32 path and the system folder path.
+Here's an example call to determine the system folder path and the font folder.
 
 ```@repl
 using WinKnownPaths
