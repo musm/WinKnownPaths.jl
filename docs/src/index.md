@@ -16,15 +16,15 @@ pkg> add WinKnownPaths
 
 Here's an example call to determine the system folder path and the font folder.
 
-```@repl
-using WinKnownPaths
+```julia
+julia> using WinKnownPaths
 
-import WinKnownPaths: FOLDERID
+julia> import WinKnownPaths: FOLDERID
 
-WinKnownPaths.path(FOLDERID.System)
+julia> WinKnownPaths.path(FOLDERID.System)
 "C:\\WINDOWS\\system32"
 
-WinKnownPaths.path(FOLDERID.Fonts)
+julia> WinKnownPaths.path(FOLDERID.Fonts)
 "C:\\WINDOWS\\Fonts"
 ```
 
