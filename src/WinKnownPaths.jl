@@ -1,4 +1,7 @@
 module WinKnownPaths
+
+using UUIDs
+
 # https://docs.microsoft.com/en-us/windows/win32/api/shlobj_core/nf-shlobj_core-shgetknownfolderpath
 # https://docs.microsoft.com/en-us/windows/win32/shell/knownfolderid
 
@@ -101,10 +104,9 @@ const VideosLibrary           = UUID("491E922F-5643-4AF4-A7EB-4E7A138D8174")
 const Windows                 = UUID("F38BF404-1D43-42F2-9305-67DE0B28FC23")
 end
 
-
-using UUIDs
 import .FOLDERID
 
+# KNOWNFOLDERID is an alias for a GUID
 struct GUID
     l1::UInt32
     w1::UInt16
@@ -119,6 +121,7 @@ function Base.convert(::Type{GUID}, uuid::UUID)
     data4 = ntuple(i -> UInt8((bytes >> (64 - i*8)) & 0xff), 8)
     return GUID(data1, data2, data3, data4)
 end
+GUID(uuid::UUID) = convert(GUID,uuid)
 
 const KF_FLAG_DEFAULT = 0x00000000
 
@@ -144,8 +147,8 @@ julia> WinKnownPaths.path(FOLDERID.Fonts)
 """
 function path(folderid::UUID)
     pathptr = Ref{Ptr{Cwchar_t}}()
-    result = ccall((:SHGetKnownFolderPath,:shell32), Cint,
-                    (GUID, UInt32, Ptr{Cvoid}, Ref{Ptr{Cwchar_t}}), folderid, KF_FLAG_DEFAULT, C_NULL, pathptr)
+    result = ccall((:SHGetKnownFolderPath,:shell32), stdcall, Cint,
+                    (Ref{GUID}, UInt32, Ptr{Cvoid}, Ref{Ptr{Cwchar_t}}), folderid, KF_FLAG_DEFAULT, C_NULL, pathptr)
     Base.systemerror("SHGetKnownFolderPath", result != 0)
     pathbuf = unsafe_wrap(Vector{Cwchar_t}, pathptr[], ccall(:wcslen, Csize_t, (Ptr{Cwchar_t},), pathptr[]))
     path = transcode(String, pathbuf)
