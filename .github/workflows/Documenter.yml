@@ -1,7 +1,9 @@
-name: CI
+name: Documenter
 on:
-  - push
-  - pull_request
+  pull_request:
+    branches: [master]
+  push:
+    tags: '*'
 jobs:
   docs:
     name: Documentation
