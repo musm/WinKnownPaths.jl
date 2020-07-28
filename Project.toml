@@ -1,7 +1,7 @@
 name = "WinKnownPaths"
 uuid = "7ef17fd6-a797-4899-824e-453c4c44979c"
 authors = ["Mustafa Mohamad <mus-m@outlook.com> and contributors"]
-version = "0.1.0"
+version = "0.1.2"
 
 [deps]
 UUIDs = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
