@@ -144,12 +144,12 @@ julia> WinKnownPaths.path(FOLDERID.Fonts)
 """
 function path(folderid::UUID)
     pathptr = Ref{Ptr{Cwchar_t}}()
-    result = ccall((:SHGetKnownFolderPath,:shell32), stdcall, Cint,
+    result = ccall((:SHGetKnownFolderPath,:shell32), Cint,
                     (GUID, UInt32, Ptr{Cvoid}, Ref{Ptr{Cwchar_t}}), folderid, KF_FLAG_DEFAULT, C_NULL, pathptr)
     Base.systemerror("SHGetKnownFolderPath", result != 0)
     pathbuf = unsafe_wrap(Vector{Cwchar_t}, pathptr[], ccall(:wcslen, Csize_t, (Ptr{Cwchar_t},), pathptr[]))
     path = transcode(String, pathbuf)
-    ccall((:CoTaskMemFree, :ole32), stdcall, Cvoid, (Ptr{Cvoid},), pathptr[])
+    ccall((:CoTaskMemFree, :ole32), Cvoid, (Ptr{Cvoid},), pathptr[])
     return path
 end
 
