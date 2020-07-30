@@ -1,4 +1,4 @@
-# WinKnownPaths
+# WinKnownPaths.jl
 
 This package allows you to reliably call known Windows paths identified by
 their UUID without having to make brittle calls to system environment variables.
