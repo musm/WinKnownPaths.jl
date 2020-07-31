@@ -4,7 +4,7 @@ This package allows you to reliably call known Windows paths identified by
 their UUID without having to make brittle calls to system environment variables.
 
 
-[![](https://img.shields.io/badge/docs-blue.svg)](https://musm.github.io/WinKnownPaths.jl/stable)
+[![](https://img.shields.io/badge/docs-blue.svg)](https://musm.github.io/WinKnownPaths.jl)
 
 ### Installation
 ```julia
